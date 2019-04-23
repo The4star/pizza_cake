@@ -9,10 +9,12 @@ module Drinks
             @cost = 2
         end
     end
+    DRINKS = [
+        coke = Drinks::Drink.new("Coke"),
+    sprite = Drinks::Drink.new("Sprite"),
+    fanta = Drinks::Drink.new("Fanta"),
+    lift = Drinks::Drink.new("Lift"),
+    water = Drinks::Drink.new("Water")]
 end
 
-coke = Drinks::Drink.new("Coke")
-sprite = Drinks::Drink.new("Sprite")
-fanta = Drinks::Drink.new("Fanta")
-lift = Drinks::Drink.new("Lift")
-water = Drinks::Drink.new("Water")
+
