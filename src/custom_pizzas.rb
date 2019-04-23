@@ -36,7 +36,7 @@ module Custom
 
         attr_reader(:ingredientname, :ingredientcost)
         
-        def initialize(ingredientname, ingredientcost)
+        def initialize(ingredientname)
             @ingredientname = ingredientname
             @ingredientcost = 2
         end
