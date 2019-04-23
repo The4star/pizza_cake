@@ -48,34 +48,34 @@ module PreMadePizzas
     end
     #Pizzas
     PIZZAS = [
-    hawaiian = PreMadePizzas::Pizza.new("Hawaiian", 11),
-    meatlovers = PreMadePizzas::Pizza.new("Meatlovers", 13),
-    margherita = PreMadePizzas::Pizza.new("Margherita", 10),
-    bbqchicken = PreMadePizzas::Pizza.new("BBQ Chicken", 11),
-    aussie = PreMadePizzas::Pizza.new("Aussie", 11),
-    capricciosa = PreMadePizzas::Pizza.new("Capricciosa", 11)]
+    hawaiian = Pizza.new("Hawaiian", 11),
+    meatlovers = Pizza.new("Meatlovers", 13),
+    margherita = Pizza.new("Margherita", 10),
+    bbqchicken = Pizza.new("BBQ Chicken", 11),
+    aussie = Pizza.new("Aussie", 11),
+    capricciosa = Pizza.new("Capricciosa", 11)]
     
     #Bases
     BASES = [
-    thin = PreMadePizzas::Base.new("Thin", 0),
-    deep_pan = PreMadePizzas::Base.new("Deep Pan", 0),
-    gluten_free = PreMadePizzas::Base.new("Gluten Free", 2)]
+    thin = Base.new("Thin", 0),
+    deep_pan = Base.new("Deep Pan", 0),
+    gluten_free = Base.new("Gluten Free", 2)]
 
     #Ingredients
-    INGREDIENTS= [
-    pepperoni = PreMadePizzas::ExtraIngredient.new("Pepperoni"),
-    mushrooms = PreMadePizzas::ExtraIngredient.new("Mushrooms"),
-    cheese = PreMadePizzas::ExtraIngredient.new("Cheese"),
-    ham = PreMadePizzas::ExtraIngredient.new("Ham"),
-    pineapple = PreMadePizzas::ExtraIngredient.new("Pineapple"),
-    onion = PreMadePizzas::ExtraIngredient.new("Onion"),
-    bacon = PreMadePizzas::ExtraIngredient.new("Bacon"),
-    olives = PreMadePizzas::ExtraIngredient.new("Olives"),
-    capsicum = PreMadePizzas::ExtraIngredient.new("Capsicum"),
-    anchovi = PreMadePizzas::ExtraIngredient.new("Anchovi"),
-    prawns = PreMadePizzas::ExtraIngredient.new("Prawns"),
-    chicken = PreMadePizzas::ExtraIngredient.new("Chicken"),
-    eggs = PreMadePizzas::ExtraIngredient.new("Eggs"),
-    spinach = PreMadePizzas::ExtraIngredient.new("Spinach"),
-    basil = PreMadePizzas::ExtraIngredient.new("Basil")]
+    INGREDIENTS = [
+    pepperoni = ExtraIngredient.new("Pepperoni"),
+    mushrooms = ExtraIngredient.new("Mushrooms"),
+    cheese = ExtraIngredient.new("Cheese"),
+    ham = ExtraIngredient.new("Ham"),
+    pineapple = ExtraIngredient.new("Pineapple"),
+    onion = ExtraIngredient.new("Onion"),
+    bacon = ExtraIngredient.new("Bacon"),
+    olives = ExtraIngredient.new("Olives"),
+    capsicum = ExtraIngredient.new("Capsicum"),
+    anchovi = ExtraIngredient.new("Anchovi"),
+    prawns = ExtraIngredient.new("Prawns"),
+    chicken = ExtraIngredient.new("Chicken"),
+    eggs = ExtraIngredient.new("Eggs"),
+    spinach = ExtraIngredient.new("Spinach"),
+    basil = ExtraIngredient.new("Basil")]
 end

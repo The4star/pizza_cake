@@ -5,7 +5,7 @@ require_relative './custom_pizzas.rb'
 module Orders
 
     class CustomerOrder
-        attr_accessor(:order_id, :order_notes,  :customer_name, :time, :premadepizzas, :custompizzas, :drinks, :order_total)
+        attr_accessor(:order_id, :order_notes,  :customer_name, :time, :premadepizzas, :custompizzas, :drinksordered, :order_total)
 
         def initialize(customer_name)
             create_order_id = Random.new
@@ -14,25 +14,28 @@ module Orders
             @time = Time.now
             @premadepizzas = []
             @custompizzas = []
-            @drinks = []
+            @drinksordered = []
             @order_notes = order_notes
             @order_total = 0
         end
 
         def add_premadepizzas(pizza)
             @premadepizzas << pizza
+            @order_total += pizza.cost
         end
 
         def add_custompizzas(custompizza)
             @custompizzas << custompizza
+            @order_total += custompizza.cost
         end
 
         def add_drinks(drink)
-            @drinks << drink 
+            @drinksordered << drink 
+            @order_total += drink.cost
         end
 
         def to_s()
-            "Order so far: \nPizzas:#{@premadepizzas}\n Custom Pizzas:#{@custom5pizzas}\n Drinks:#{@drinks}"
+            "Order so far as of #{@time}: \nPizzas:#{@premadepizzas}\n Custom Pizzas:#{@custompizzas}\n Drinks:#{@drinksordered}\n Total for order: $#{order_total}"
         end
     end
 end

@@ -2,19 +2,20 @@ module Drinks
 
     class Drink 
 
-        attr_reader(:name, :cost)
+        attr_accessor(:name, :cost)
 
         def initialize(name)
             @name = name
             @cost = 2
         end
     end
-    DRINKS = [
-        coke = Drinks::Drink.new("Coke"),
-    sprite = Drinks::Drink.new("Sprite"),
-    fanta = Drinks::Drink.new("Fanta"),
-    lift = Drinks::Drink.new("Lift"),
-    water = Drinks::Drink.new("Water")]
+    
+    DRINKSAVAILABLE = [
+    coke = Drink.new("Coke"),
+    sprite = Drink.new("Sprite"),
+    fanta = Drink.new("Fanta"),
+    lift = Drink.new("Lift"),
+    water = Drink.new("Water")]
 end
 
 

@@ -1,23 +1,26 @@
 module Custom
 
     class CustomPizza
-
-        def initialize(number)
-            @number = 0
+    attr_accessor(:base, :ingredients, :cost, :size, :toppings)
+        def initialize()
             @base = base
             @ingredients = []
+            @toppings = []
             @cost = 5
             @size = size
         end
 
         def add_base(base)
             @base = base.basename 
-            @cost += basename.basecost
+            @cost += base.basecost
         end
 
-        def add_extras(extra)
-            @extras << extra.ingredientname
-            @cost += extra.ingredientcost
+        def add_toppings(topping)
+            @toppings << topping.ingredientname
+            @cost += topping.ingredientcost
+        end
+        def to_s()
+            "#{@size} #{@base} custom pizza with #{@extras} for $#{@cost}"
         end
     end
 
@@ -29,7 +32,6 @@ module Custom
             @basename = basename
             @basecost = basecost
         end
-    
     end
 
     class Ingredient
@@ -41,26 +43,28 @@ module Custom
             @ingredientcost = 2
         end
     end
+
+     #bases
+     BASES = [
+        thin = Base.new("Thin", 0),
+        deep_pan = Base.new("Deep Pan", 0),
+        gluten_free = Base.new("Gluten Free", 2)]
+
+        #ingredients
+    INGREDIENTS = [
+        pepperoni = Ingredient.new("Pepperoni"),
+        mushrooms = Ingredient.new("Mushrooms"),
+        cheese = Ingredient.new("Cheese"),
+        ham = Ingredient.new("Ham"),
+        pineapple = Ingredient.new("Pineapple"),
+        onion = Ingredient.new("Onion"),
+        bacon = Ingredient.new("Bacon"),
+        olives = Ingredient.new("Olives"),
+        capsicum = Ingredient.new("Capsicum"),
+        anchovi = Ingredient.new("Anchovi"),
+        prawns = Ingredient.new("Prawns"),
+        chicken = Ingredient.new("Chicken"),
+        eggs = Ingredient.new("Eggs"),
+        spinach = Ingredient.new("Spinach"),
+        basil = Ingredient.new("Basil")]
 end
-
- #bases
- thin = Custom::Base.new("Thin", 0)
- deep_pan = Custom::Base.new("Deep Pan", 0)
- gluten_free = Custom::Base.new("Gluten Free", 2) 
-
- #ingredients
- pepperoni = Custom::Ingredient.new("Pepperoni")
- mushrooms = Custom::Ingredient.new("Mushrooms")
- cheese = Custom::Ingredient.new("Cheese")
- ham = Custom::Ingredient.new("Ham")
- pineapple = Custom::Ingredient.new("Pineapple")
- onion = Custom::Ingredient.new("Onion")
- bacon = Custom::Ingredient.new("Bacon")
- olives = Custom::Ingredient.new("Olives")
- capsicum = Custom::Ingredient.new("Capsicum")
- anchovi = Custom::Ingredient.new("Anchovi")
- prawns = Custom::Ingredient.new("Prawns")
- chicken = Custom::Ingredient.new("Chicken")
- eggs = Custom::Ingredient.new("Eggs")
- spinach = Custom::Ingredient.new("Spinach")
- basil = Custom::Ingredient.new("Basil")
