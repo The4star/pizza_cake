@@ -1,6 +1,6 @@
 require_relative './drinks.rb'
-require_relative './premade_pizzas.rb'
-require_relative './custom_pizzas.rb'
+require_relative './pizzas.rb'
+
 
 module Orders
 
@@ -35,9 +35,10 @@ module Orders
         end
 
         def to_s()
-            "Order so far as of #{@time}: \nPizzas:#{@premadepizzas}\n Custom Pizzas:#{@custompizzas}\n Drinks:#{@drinksordered}\n Total for order: $#{order_total}"
+            "Order so far as of #{@time}: \nPizzas:#{@premadepizzas}\n Custom Pizzas:#{@custompizzas}\n Drinks:#{@drinksordered}\n Order notes: #{@order_notes} \nTotal for order: $#{order_total}"
         end
     end
+    ORDERS_FOR_TODAY =[]
 end
     
     

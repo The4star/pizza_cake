@@ -1,4 +1,4 @@
-module PreMadePizzas
+module Pizzas
 
     class Pizza
 
@@ -26,6 +26,30 @@ module PreMadePizzas
         end
     end
 
+    class CustomPizza
+        attr_accessor(:base, :ingredients, :cost, :size, :toppings)
+            def initialize()
+                @base = base
+                @ingredients = []
+                @toppings = []
+                @cost = 5
+                @size = size
+            end
+    
+            def add_base(base)
+                @base = base.basename 
+                @cost += base.basecost
+            end
+    
+            def add_toppings(topping)
+                @toppings << topping.ingredientname
+                @cost += topping.ingredientcost
+            end
+            def to_s()
+                "#{@size} #{@base} custom pizza with #{@extras} for $#{@cost}"
+            end
+        end
+
     class Base
 
         attr_reader(:basename, :basecost)
@@ -52,7 +76,7 @@ module PreMadePizzas
     meatlovers = Pizza.new("Meatlovers", 13),
     margherita = Pizza.new("Margherita", 10),
     bbqchicken = Pizza.new("BBQ Chicken", 11),
-    aussie = Pizza.new("Aussie", 11),
+    aussie = Pizza.new("Vegetarian", 11),
     capricciosa = Pizza.new("Capricciosa", 11)]
     
     #Bases
@@ -77,5 +101,7 @@ module PreMadePizzas
     chicken = ExtraIngredient.new("Chicken"),
     eggs = ExtraIngredient.new("Eggs"),
     spinach = ExtraIngredient.new("Spinach"),
-    basil = ExtraIngredient.new("Basil")]
+    basil = ExtraIngredient.new("Basil"),
+    tomatosauce = ExtraIngredient.new("Tomato Sauce"),
+    bbqsauce = ExtraIngredient.new("BBQ Sauce")]
 end
