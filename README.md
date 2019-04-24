@@ -84,7 +84,7 @@ The user can also access and ammend previous orders:
 
 Ammending an order.
 
-![ammending an order](./docs/ammending_order.jpg)
+![ammending an order](./docs/ammending_order.JPG)
 
 ## Designing and Planning
 ### Brainstorming
@@ -135,8 +135,8 @@ The only other things we can think of is translating the app into multiple langu
 ### Challenges
 * Accessing objects within modules
 * Making sure the app would continue to run unless the user chooses to exit 
-* storing orders for later reference
-* accessing orders so that you are able to ammend them.
+* Storing orders for later reference
+* Accessing orders so that you are able to amend them.
 
 ### Future Enhancements
 * Staff login
