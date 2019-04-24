@@ -31,14 +31,13 @@ def main_menu()
             puts("What is the order name you would like to ammend?")
             order_name = gets().chomp
             Orders::ORDERS_FOR_TODAY.each do |value|
-               if (value.customer_name == order_name.capitalize)
-                  Orders::ORDERS_FOR_TODAY.pop
+               if (value.customer_name.include?(order_name.capitalize))
+                  Orders::ORDERS_FOR_TODAY.delete(value)
                   order_menu(value)
-               else
-                puts("Sorry, that order does not exist")
-                main_menu
                end
             end
+            puts("Sorry, that order does not exist")
+            main_menu
         end 
     when 3
         exit
