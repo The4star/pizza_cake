@@ -35,7 +35,7 @@ module Orders
         end
 
         def to_s()
-            "Order so far as of #{@time}: \nPizzas:#{@premadepizzas}\n Custom Pizzas:#{@custompizzas}\n Drinks:#{@drinksordered}\n Order notes: #{@order_notes} \nTotal for order: $#{order_total}"
+            "Order so far as of #{@time}: \n Pizzas:#{@premadepizzas}\n Custom Pizzas:#{@custompizzas}\n Drinks:#{@drinksordered}\n Order notes: #{@order_notes} \nTotal for order: $#{order_total}"
         end
     end
     ORDERS_FOR_TODAY =[]
