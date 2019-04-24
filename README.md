@@ -54,11 +54,11 @@ Initial planning was carried out on paper as well as a user workflow drawn up in
 ### Task Management
 Trello was used in a minimalist way to designate tasks and to keep us on task as we worked through  making the program.
 
-![trello](./docs/trello.png)
+![trello](./docs/trello.jpg)
 
 ### User Journey/Workflow
 A workflow was drawn up to help us know exactly how the app would run which made it alot easier to then make the program:
-![pizza_cake_workflow](./docs/app_workflow_diagram.png)
+![pizza_cake_workflow](./docs/app_workflow_diagram.jpg)
 
 ### Project Plan & Timeline
 The scope for Pizza Cake v1.0 initial build was two days. After planning and making up our workflow we then set about writing the code and testing the code until we were happy with the minimum viable product. We then created the readme file and a presentation for when we sell the product as well as testing the product to make sure our code was working according to the way we had planned.   
