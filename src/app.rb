@@ -54,7 +54,6 @@ def get_customer_name()
     new_order = Orders::CustomerOrder.new(customer_name)
 
     order_menu(new_order) 
-
 end
 
 def order_menu(customer)    
