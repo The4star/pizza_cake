@@ -49,36 +49,36 @@ You can then Create an order, all functions are controlled by numeric choice and
 
 Creating an order name
 
-![creating_an_order_name](./docs/order_name.jpg)
+![creating_an_order_name](./docs/order_name.JPG)
 
 Selecting what you want to order.
 
-![select_order](./docs/select_order.jpg)
-![selecting_order](./docs/select_pizza.jpg)
+![select_order](./docs/select_order.JPG)
+![selecting_order](./docs/select_pizza.JPG)
 
 Selecting a base. 
 
-![selecting_base](./docs/select_base.jpg)
+![selecting_base](./docs/select_base.JPG)
 
 Selecting a size. 
 
-![selecting_size](./docs/select_size.jpg)
+![selecting_size](./docs/select_size.JPG)
 
 Selecting Extras. 
 
-![selecting_extras](./docs/adding_extras.jpg)
+![selecting_extras](./docs/adding_extras.JPG)
 
 Adding a drink. 
 
-![adding_drink](./docs/adding_drink.jpg)
+![adding_drink](./docs/adding_drink.JPG)
 
 Deleting an item.
 
-![deleting_item](./docs/deleting_item.jpg)
+![deleting_item](./docs/deleting_item.JPG)
 
 Placing an order.
 
-![placing_order](./docs/placing_order.jpg)
+![placing_order](./docs/placing_order.JPG)
 
 The user can also access and ammend previous orders:
 
