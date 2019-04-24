@@ -53,7 +53,7 @@ Creating an order name
 
 Selecting what you want to order.
 
-![selecting_order](./docs/select_order.jpg)
+![select_order](./docs/select_order.jpg)
 ![selecting_order](./docs/select_pizza.jpg)
 
 Selecting a base. 
