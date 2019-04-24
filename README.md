@@ -43,7 +43,7 @@ $ ruby app.rb
 Pizza cake will open and you are ready to start making orders! 
 
 From the main menu, make a selection:
-![title_screenshot](./docs/title_screen.png)
+![title_screenshot](./docs/title_screen.jpg)
 
 ## Designing and Planning
 ### Brainstorming
