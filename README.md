@@ -17,70 +17,72 @@ Made for potentional sale to Pizza Shops, "Pizza Cake" provides a quick and simp
 
 Based on user input, Pizza Cake will return the users order itemized including cost per item and total order cost.
 
-Pizza Cake users can build there own pizza by selecting size, base type and adding there choosen toppings, this returns an updated total order cost and the items in the current order (updated after each selection)
+Pizza Cake users can build there own pizza by selecting size, base type and adding their chosen toppings, this returns an updated total order cost and the items in the current order (updated after each selection).
 
-Alternatively, users can select a premade pizza and add any additional topping required.
+Alternatively, users can select a premade pizza and add any additional toppings required.
 
-Throughout the session users can use review there order and the total cost at the top of the screen and have option to delete the last item added to the order.
+Throughout the session users can review their order and the total cost at the top of the screen and have option to delete the last item added to the order.
 
 ### Dependencies
-The Ruby gems 'tty-font', 'tts-spinner', 'net/http' and 'json' are required to run myMDb.
+The only Ruby Gem used was Artii for the title, all the rest of the code has been written by the team. 
 
 
 ### Instructions for Use
-Open Terminal or preferred console. To initialise program, enter:
+To run Pizza Cake you will need to install Artii. To do this, enter the following into terminal: 
 
 ```ruby
-$ bundle install
-```
-This will install the following Ruby gems specified in the Gemfile:
+$ gem install artii
+``` 
 
-'artii' <br> -->
-
-
-
-
+Open Terminal or preferred console. To initialise program, locate the src folder and call: 
 
 ```ruby
-$ ruby main.rb
+$ ruby app.rb
 ```
-Ready to go! 
+
+Pizza cake will open and you are ready to start making orders! 
 
 From the main menu, make a selection:
-![main_menu_screenshot](assets/main_menu.png)
+![title_screenshot](./docs/title_screen.png)
 
 ## Designing and Planning
 ### Brainstorming
-<!-- Paper was used for initial freeform brainstorming and scope definition.  -->
+Initial planning was carried out on paper as well as a user workflow drawn up in Microsoft Word.
 
-![brainstorming1](assets/brainstorming1.jpg)
-![brainstorming2](assets/brainstorming2.jpg)
-![brainstorming3](assets/brainstorming3.jpg)
-![brainstorming](assets/brainstorming4.jpg)
+![planning in action](./docs/paper_planning.jpg)
 
 ### Task Management
-Trello allowed us to define the features, flow and logic for a minimum viable product, breakdown and itemise current tasks to be performed and scope out future enhancements or challenges to overcome, in a much more organised and systematic manner.
+Trello was used in a minimalist way to designate tasks and to keep us on task as we worked through  making the program.
 
-![trello_tasks](assets/trello.png)
+![trello](./docs/trello.png)
 
 ### User Journey/Workflow
-![myMDb_workflow](assets/user-journey.jpg) -->
+A workflow was drawn up to help us know exactly how the app would run which made it alot easier to then make the program:
+![pizza_cake_workflow](./docs/app_workflow_diagram.png) -->
 
 ### Project Plan & Timeline
-The scope for Pizza Cake v1.0 initial build was two days. After finding and testing OMDb's API, our first step was to narrow down the information we wanted to use from the hash returned within our application, and in turn, define what the primary purpose and scope of the MVP would be. Given the two-day turnaround, time management was key, and initial discussions focused on balancing brainstorming possibilities with current limitations. Along the way, current challenges and ideas for future enhancements were noted for our documentation. -->
-
+The scope for Pizza Cake v1.0 initial build was two days. After planning and making up our workflow we then set about writing the code and testing the code until we were happy with the minimum viable product. We then created the readme file and a presentation for when we sell the product as well as testing the product to make sure our code was working according to the way we had planned.   
 ### Coding Process
+1. We created the file system 
+2. Seperate files were created and modules were made
+3. Classes were added in the modules with attributes
+4. Methods were added in the classes
+5. Constants were added in the module
+6. The main functioning/workflow of the app was coded
+7. Stretch goals (storing orders for later use and ammending the orders) were coded
 
 ### Challenges
-* Scaling back features to the minimum to plot out iterative future enhancements.
-* No functionality to export or inbuilt database to store values outside of a single user session or store movie titles for randomiser.
-* Finding an API for movie information data retrieval.
-* Testing out movie titles stored in randomiser due to exact/near exact search parameters required by API.
+* Accessing objects within modules
+* Making sure the app would continue to run unless the user chooses to exit 
+* storing orders for later reference
+* accessing orders so that you are able to ammend them.
 
 ### Future Enhancements
-* Functionality to export or email list to within display movies option.
-* Create a database to store movie shortlist permanently (beyond a single session).
-* Enable broad match search parameters using OMDb API.
-* Generate a list of movies by genre for randomiser via an API rather than manual hardcoding.
-* Add error messages – e.g. if duplicate movies are added (“This movie already exists.”)
-* Functionality to update or delete existing movie entries.
+* Staff login
+* Reporting features
+* Access order history from previous days
+* Cash out function
+* Choose Delivery, pickup or dine in 
+* If dine in be able to assign orders to a table
+* allow the end user to change pricing of products
+* and many more
