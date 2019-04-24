@@ -45,6 +45,47 @@ Pizza cake will open and you are ready to start making orders!
 From the main menu, make a selection:
 ![title_screenshot](./docs/title_screen.jpg)
 
+You can then Create an order, all functions are controlled by numeric choice and prompt the user to enter a valid selection if they have make a wrong choice: 
+
+Creating an order name
+
+![creating_an_order_name](./docs/order_name.jpg)
+
+Selecting what you want to order.
+
+![selecting_order](./docs/select_order.jpg)
+![selecting_order](./docs/select_pizza.jpg)
+
+Selecting a base. 
+
+![selecting_base](./docs/select_base.jpg)
+
+Selecting a size. 
+
+![selecting_size](./docs/select_size.jpg)
+
+Selecting Extras. 
+
+![selecting_extras](./docs/adding_extras.jpg)
+
+Adding a drink. 
+
+![adding_drink](./docs/adding_drink.jpg)
+
+Deleting an item.
+
+![deleting_item](./docs/deleting_item.jpg)
+
+Placing an order.
+
+![placing_order](./docs/placing_order.jpg)
+
+The user can also access and ammend previous orders:
+
+Ammending an order.
+
+![ammending an order](./docs/ammending_order.jpg)
+
 ## Designing and Planning
 ### Brainstorming
 Initial planning was carried out on paper as well as a user workflow drawn up in Microsoft Word.
@@ -62,6 +103,7 @@ A workflow was drawn up to help us know exactly how the app would run which made
 
 ### Project Plan & Timeline
 The scope for Pizza Cake v1.0 initial build was two days. After planning and making up our workflow we then set about writing the code and testing the code until we were happy with the minimum viable product. We then created the readme file and a presentation for when we sell the product as well as testing the product to make sure our code was working according to the way we had planned.   
+
 ### Coding Process
 1. We created the file system 
 2. Seperate files were created and modules were made
@@ -70,6 +112,25 @@ The scope for Pizza Cake v1.0 initial build was two days. After planning and mak
 5. Constants were added in the module
 6. The main functioning/workflow of the app was coded
 7. Stretch goals (storing orders for later use and ammending the orders) were coded
+
+### Testing the app
+The following tests were peformed:
+
+| test num | test method name | inputs | expected result | actual result |
+| ------------ | ------------ | ------------ | ------------- | ------------- |
+| *1* | *test_choose_a_drink* | *customerorder*  | *The method wll ask for a valid selection as the user did not enter an integer between 1 and 6* | *please make a valid selection*
+| *2* | *test_main_menu* | *none* |*The method will change to the customer_name method because the user has selected option 1*|*Pass*|
+| *3* | *test_remove_item* | *customerorder* |*The method will remove the last drink from the drinks_ordered array and remove the cost of the drink from the order_total*| pass |
+
+### Why Certain Data Types Were Used
+* We used modules in seperate files so that we were able to seperate the different items that a customer was able to order so that the main workflow of the app would be neater and more readable. 
+* Case statements were used to shorten the amount of code required to write menues
+* All objects were stored in Arrays within the modules that were constants again so that the main workflow of the app was neater and that all the different aspects of the classes and objects were kept in the one easy to read file. 
+
+### Societal impact of the app
+Pizza Cake is in no way meant to cause offence or harm to the user. There are multiple different choices for food for different allergies from Gluten Free bases to Vegetarian options and the ability to customize a pizza from scratch if no suitable premade options are available. Notes can also be left on the order in case of the user needing to let the pizza shop know anything. 
+
+The only other things we can think of is translating the app into multiple languages which would require a third party and alot longer than the two day timeframe. 
 
 ### Challenges
 * Accessing objects within modules
@@ -84,5 +145,5 @@ The scope for Pizza Cake v1.0 initial build was two days. After planning and mak
 * Cash out function
 * Choose Delivery, pickup or dine in 
 * If dine in be able to assign orders to a table
-* allow the end user to change pricing of products
-* and many more
+* Allow the end user to change pricing of products
+* Many more

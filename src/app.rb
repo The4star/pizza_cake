@@ -376,10 +376,14 @@ def add_premade_pizza(customerorder)
             puts("You're chosen extras: #{chosen_pizza.extras}\n Order total: $#{chosen_pizza.cost}")
             puts
         when 18
-            chosen_pizza.extras.pop
-            chosen_pizza.cost -= 2
-            puts("You're chosen extras: #{chosen_pizza.extras}\n Order total: $#{chosen_pizza.cost}")
-            puts
+            if (chosen_pizza.extras.length <= 0)
+                puts("You need to add an extra first")
+            else 
+                chosen_pizza.extras.pop
+                chosen_pizza.cost -= 2
+                puts("You're chosen extras: #{chosen_pizza.extras}\n Order total: $#{chosen_pizza.cost}")
+                puts
+            end
         else
             puts("please make a valid selection")
         end
@@ -603,10 +607,14 @@ def choose_custom_pizza(customerorder)
             puts("You're chosen extras: #{new_custom_pizza.toppings}\n Order total: $#{new_custom_pizza.cost}")
             puts
         when 18
-            new_custom_pizza.toppings.pop
-            new_custom_pizza.cost -= 2
-            puts("You're chosen extras: #{new_custom_pizza.toppings}\n Order total: $#{new_custom_pizza.cost}")
-            puts
+            if (new_custom_pizza.toppings.length <= 0)
+                puts("You need to add a topping first")
+            else 
+                new_custom_pizza.toppings.pop
+                new_custom_pizza.cost -= 2
+                puts("You're chosen extras: #{new_custom_pizza.toppings}\n Order total: $#{new_custom_pizza.cost}")
+                puts
+            end
         else
             puts("please make a valid selection")
         end
