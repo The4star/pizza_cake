@@ -3,15 +3,15 @@
 
 ## Contributors
 |[![Clinton Forster](./docs/clinton.jpg)] https://github.com/The4Star| 
-[![kristy lake](/assets/contributors-jmerrigan-70x70.jpg)] https://github.com/klps007|
+[![Kristy Lake](./docs/kristy.jpg)] https://github.com/klps007|
 |-----------|-----------|
 | Clinton Forster | Kristy Lake |
-<!-- 
+
 ### Link
 https://github.com/The4star/pizza_cake
 
 ### Purpose
-Made for potentional sale to Pizza Shops, Pizza cake provides a quick and simple process making, placing and storing the order details for furture refernce and reporting. Within Pizza Cake's current scope as a minimum viable product, its primary purpose for the user is a simple process for  ordering a premade pizza, building a custom pizza, amending an order, placing the order and storing the order should it need to be recalled in the future
+Made for potentional sale to Pizza Shops, "Pizza Cake" provides a quick and simple process for making, placing and storing multiple orders which can also be ammended after an order has been placed. Within Pizza Cake's current scope as a minimum viable product, its primary purpose for the user is a simple process for  ordering a premade pizza, building a custom pizza, ordering drinks,amending an order, placing the order and storing the order should it need to be recalled in the future.
  
 #### Functionality
 
@@ -69,22 +69,7 @@ Trello allowed us to define the features, flow and logic for a minimum viable pr
 ### Project Plan & Timeline
 The scope for Pizza Cake v1.0 initial build was two days. After finding and testing OMDb's API, our first step was to narrow down the information we wanted to use from the hash returned within our application, and in turn, define what the primary purpose and scope of the MVP would be. Given the two-day turnaround, time management was key, and initial discussions focused on balancing brainstorming possibilities with current limitations. Along the way, current challenges and ideas for future enhancements were noted for our documentation. -->
 
-<!-- Day 1 tasks and time were largely spent on buiilding menues and defining methods to return user input selection and order total, refining the main workflow, functionality and features, logic for methods in Trello, and getting a functional base code.
-
-Day 2 tasks and time were largely spent on cleaning up and enhancing the user interface, testing user selection, writing documentation.
-
-Following this approach enabled as to best manage our time to effectivley to reach project mile stones and the end goal of a working application -->
-
-
 ### Coding Process
-<!-- After defining the menus, options for user selection for Pizza Cake user interface and backend,
-functional base code was created for user selections. This invloved methods to add, delete, place orders and push user inputted data into an empty arrays to hold the order details. -->
-
-<!-- Additonal time was spent improving the user interface to improve functionality and return values
- -->
-
-<!-- After testing the application to ensure that the user is looped back to the main menu after user makes selection and all menu functions are working -->
-
 
 ### Challenges
 * Scaling back features to the minimum to plot out iterative future enhancements.
