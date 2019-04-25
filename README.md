@@ -140,7 +140,7 @@ The only other things we can think of is translating the app into multiple langu
 * Because we only had two days and both had commitments on Thursday and Friday we felt rushed to get the app finished and definitely could have neatened up the code and implemented certain aspects better if we had more time.
 
 ### Future Enhancements
-* Staff login
+* Add users and a Staff login 
 * Reporting features
 * Access order history from previous days
 * Cash out function
