@@ -343,7 +343,7 @@ def add_premade_pizza(customerorder)
     15.	Basil
     16.	Tomato Sauce
     17.	BBQ Sauce
-    17.	Delete Last Item
+    18.	Delete Last Item
     19.	Done
     """)
     extra_choice = gets().chomp.to_i
@@ -451,7 +451,7 @@ def add_premade_pizza(customerorder)
         15.	Basil
         16.	Tomato Sauce
         17.	BBQ Sauce
-        17.	Delete Last Item
+        18.	Delete Last Item
         19.	Done
     
         """)
@@ -581,7 +581,7 @@ def choose_custom_pizza(customerorder)
     15.	Basil
     16.	Tomato Sauce
     17.	BBQ Sauce
-    17.	Delete Last Item
+    18.	Delete Last Item
     19.	Done
     """)
     topping_choice = gets().chomp.to_i
@@ -689,7 +689,7 @@ def choose_custom_pizza(customerorder)
         15.	Basil
         16.	Tomato Sauce
         17.	BBQ Sauce
-        17.	Delete Last Item
+        18.	Delete Last Item
         19.	Done
     
         """)
