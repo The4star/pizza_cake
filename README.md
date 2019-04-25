@@ -137,6 +137,7 @@ The only other things we can think of is translating the app into multiple langu
 * Making sure the app would continue to run unless the user chooses to exit 
 * Storing orders for later reference
 * Accessing orders so that you are able to amend them.
+* Because we only had two days and both had commitments on Thursday and Friday we felt rushed to get the app finished and definitely could have neatened up the code and implemented certain aspects better if we had more time.
 
 ### Future Enhancements
 * Staff login
