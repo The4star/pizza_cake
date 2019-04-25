@@ -34,8 +34,22 @@ module Orders
             @order_total += drink.cost
         end
 
-        def to_s()
-            "Order so far as of #{@time}: \n Pizzas:#{@premadepizzas}\n Custom Pizzas:#{@custompizzas}\n Drinks:#{@drinksordered}\n Order notes: #{@order_notes} \nTotal for order: $#{order_total}"
+        def pizza_string()
+            @premadepizzas.each do |pizza|
+                puts("1 #{pizza.size} #{pizza.base} #{pizza.name} with extra #{pizza.extras} for $#{pizza.cost}")
+            end
+        end
+
+        def custom_pizza_string()
+            @custompizzas.each do |pizza|
+                puts("1 #{pizza.size} #{pizza.base} custom made pizza with #{pizza.toppings} for $#{pizza.cost}")
+            end
+        end
+
+        def drinks_string()
+            @drinksordered.each do |drink|
+                puts("1 #{drink.name}")
+            end
         end
     end
     ORDERS_FOR_TODAY =[]

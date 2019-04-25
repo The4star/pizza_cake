@@ -2,9 +2,9 @@ module Pizzas
 
     class Pizza
 
-        attr_accessor(:size, :cost, :base, :extras)
-        attr_reader(:name)
-        def initialize(name, cost)
+        attr_accessor(:name, :size, :cost, :base, :extras)
+        
+        def initialize()
             @name = name
             @size = size
             @cost = cost
@@ -22,7 +22,7 @@ module Pizzas
             @cost += extra.ingredientcost
         end
         def to_s()
-            "#{@size} #{@base} #{@name} with #{@extras} for $#{@cost}"
+            "#{@size} #{@base} #{@name} with extra #{@extras} for $#{@cost}"
         end
     end
 
@@ -46,7 +46,7 @@ module Pizzas
                 @cost += topping.ingredientcost
             end
             def to_s()
-                "#{@size} #{@base} custom pizza with #{@extras} for $#{@cost}"
+                "#{@size} #{@base} custom pizza with #{@toppings} for $#{@cost}"
             end
         end
 
@@ -63,21 +63,22 @@ module Pizzas
 
     class ExtraIngredient
 
-        attr_reader(:ingredientname, :ingredientcost)
+        attr_accessor(:ingredientname, :ingredientcost)
         
         def initialize(ingredientname)
             @ingredientname = ingredientname
             @ingredientcost = 2
         end
     end
+
     #Pizzas
-    PIZZAS = [
-    hawaiian = Pizza.new("Hawaiian", 11),
-    meatlovers = Pizza.new("Meatlovers", 13),
-    margherita = Pizza.new("Margherita", 10),
-    bbqchicken = Pizza.new("BBQ Chicken", 11),
-    aussie = Pizza.new("Vegetarian", 11),
-    capricciosa = Pizza.new("Capricciosa", 11)]
+    # PIZZAS = [
+    # hawaiian = Pizza.new("Hawaiian", 11),
+    # meatlovers = Pizza.new("Meatlovers", 13),
+    # margherita = Pizza.new("Margherita", 10),
+    # bbqchicken = Pizza.new("BBQ Chicken", 11),
+    # aussie = Pizza.new("Vegetarian", 11),
+    # capricciosa = Pizza.new("Capricciosa", 11)]
     
     #Bases
     BASES = [

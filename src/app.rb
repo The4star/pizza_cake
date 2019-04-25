@@ -2,13 +2,13 @@ require_relative './drinks.rb'
 require_relative './pizzas.rb'
 require_relative './orders.rb'
 require 'artii'
-
+require 'colorize'
 
 
 def main_menu()
     a = Artii::Base.new :font => 'starwars'
     puts a.asciify('Pizza Cake') 
-    puts ("version 1.0")
+    puts ("version 1.0".colorize(:blue))
     
     puts("What would you like to do? \n1. Create a new order\n2. Ammend an existing order \n3. Exit Application")
         user_choice = gets().chomp.to_i
@@ -18,17 +18,18 @@ def main_menu()
         get_customer_name()
     when 2
         if (Orders::ORDERS_FOR_TODAY.length <= 0)
-            puts("You have not placed any orders yet")
+            puts("You have not placed any orders yet".colorize(:red))
             puts
             main_menu()
         else
-            puts ("Current orders for today:")
+            puts
+            puts ("Current orders for today:".colorize(:blue))
             puts
             Orders::ORDERS_FOR_TODAY.each do |value|
                 puts value.customer_name
             end
             puts
-            puts("What is the order name you would like to ammend?")
+            puts("What is the order name you would like to ammend?".colorize(:blue))
             order_name = gets().chomp
             Orders::ORDERS_FOR_TODAY.each do |value|
                if (value.customer_name.include?(order_name.capitalize))
@@ -36,19 +37,23 @@ def main_menu()
                   order_menu(value)
                end
             end
-            puts("Sorry, that order does not exist")
+            puts
+            puts("Sorry, that order does not exist".colorize(:red))
+            puts
             main_menu
         end 
     when 3
         exit
     else
-        puts("please make a valid selection")
+        puts("please make a valid selection".colorize(:red))
     end
 end
+
 def get_customer_name()
     puts
-    print("Please enter a name for the order:")
-    customer_name = gets().chomp.capitalize
+    print("Please enter a name for the order: ".colorize(:blue))
+    customer_name = gets().chomp.capitalize 
+    puts
     order_number = 0
     new_order = "order#{order_number + 1}" 
     new_order = Orders::CustomerOrder.new(customer_name)
@@ -56,8 +61,25 @@ def get_customer_name()
     order_menu(new_order) 
 end
 
-def order_menu(customer)    
-   puts customer
+def order_status(customer)
+    puts("Order so far as of #{customer.time}:")
+    puts
+    puts ("Pizzas:")
+    customer.pizza_string
+    puts
+    puts ("Custom Pizzas:") 
+    customer.custom_pizza_string
+    puts
+    puts ("Drinks:")
+    customer.drinks_string 
+    puts
+    puts ("Order notes: #{customer.order_notes} \n\nTotal for order: $#{customer.order_total}")  
+end
+
+def order_menu(customer) 
+
+    order_status(customer)
+
     puts ("""
     You are working on order #{customer.order_id} for #{customer.customer_name}
 
@@ -80,24 +102,26 @@ def order_menu(customer)
         when 3
             choose_a_drink(customer)
         when 4
-            puts("Please leave a message for your order below eg(no onion, allergic to peanuts):")
+            puts("Please leave a message for your order below eg(no onion, allergic to peanuts):".colorize(:blue))
             customer.order_notes = gets().chomp
             order_menu(customer)
         when 5
             remove_item(customer)
         when 6
             if (customer.premadepizzas.length <= 0 and customer.custompizzas.length <= 0 and customer.drinksordered.length <= 0)
-                puts("You need to order something first!")
+                puts("You need to order something first!".colorize(:red))
                 puts
                 order_menu(customer)
             else
-                puts ("""Your order has been placed as follows:
-                #{customer}
-                """)
+                puts
+                puts ("""Your order has been placed as follows:".colorize(:green))
+                puts
+                order_status(customer)
+                
                 Orders::ORDERS_FOR_TODAY << customer
                 puts
 
-                puts("Would you like to do anything else? \n1. Yes \n2. No")
+                puts("Would you like to do anything else? \n1. Yes \n2. No".colorize(:blue))
                 another_order = gets().chomp.to_i
 
                 case (another_order)
@@ -106,14 +130,16 @@ def order_menu(customer)
                 when 2
                     exit
                 else
-                    puts("please make a valid selection")
-                    puts("Would you like to make another order? \n1. Yes \n2. No")
+                    puts("please make a valid selection".colorize(:red))
+                    puts("Would you like to make another order? \n1. Yes \n2. No".colorize(:blue))
                 another_order = gets().chomp.to_i
                 end
             end
         else
-            puts("please make a valid selection")
-            puts customer
+            puts("please make a valid selection".colorize(:red))
+            puts
+            order_status(customer)
+
             puts ("""
             You are working on order #{customer.order_id} for #{customer.customer_name}
         
@@ -131,48 +157,62 @@ end
 
 #The process for ordering a premade pizza
 def add_premade_pizza(customerorder)
-
+    chosen_pizza_number = 0
+    chosen_pizza = "custom#{chosen_pizza_number + 1}" 
+    chosen_pizza = Pizzas::Pizza.new()
     puts ("""
     You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
 
     What Pizza would you like?
-    1.	Hawaiian $#{Pizzas::PIZZAS[0].cost}
-    2.	Meat lovers $#{Pizzas::PIZZAS[1].cost}
-    3.	Margherita $#{Pizzas::PIZZAS[2].cost}
-    4.	BBQ Chicken $#{Pizzas::PIZZAS[3].cost}
-    5.	Vegetarian $#{Pizzas::PIZZAS[4].cost}
-    6.	Capricciosa $#{Pizzas::PIZZAS[5].cost}
+    1.	Hawaiian $11
+    2.	Meat lovers $13
+    3.	Margherita $10
+    4.	BBQ Chicken $11
+    5.	Vegetarian $11
+    6.	Capricciosa $11
     """)
     pizza_choice = gets().chomp.to_i
     
     while (pizza_choice != 1 or pizza_choice != 2 or  pizza_choice != 3 or pizza_choice != 4 or pizza_choice != 5 or pizza_choice != 6)
         case pizza_choice
         when 1
-            chosen_pizza =  Pizzas::PIZZAS[0]
-            puts("You added a #{Pizzas::PIZZAS[0].name}")
+            chosen_pizza.name =  "Hawaiian"
+            chosen_pizza.cost = 11
+            puts
+            puts("You added a #{chosen_pizza.name} pizza for $#{chosen_pizza.cost}".colorize(:green))
             break
         when 2
-            chosen_pizza =  Pizzas::PIZZAS[1]
-            puts("You added a #{Pizzas::PIZZAS[1].name}")
+            chosen_pizza.name = "Meatlovers"
+            chosen_pizza.cost = 13
+            puts
+            puts("You added a #{chosen_pizza.name} pizza for $#{chosen_pizza.cost}".colorize(:green))
             break
         when 3
-            chosen_pizza =  Pizzas::PIZZAS[2]
-            puts("You added a #{Pizzas::PIZZAS[2].name}")
+            chosen_pizza.name = "Margherita"
+            chosen_pizza.cost = 10
+            puts
+            puts("You added a #{chosen_pizza.name} pizza for $#{chosen_pizza.cost}".colorize(:green))
             break
         when 4
-            chosen_pizza =  Pizzas::PIZZAS[3]
-            puts("You added a #{Pizzas::PIZZAS[3].name}")
+            chosen_pizza.name = "BBQ Chicken"
+            chosen_pizza.cost = 11
+            puts
+            puts("You added a #{chosen_pizza.name} pizza for $#{chosen_pizza.cost}".colorize(:green))
             break
         when 5
-            chosen_pizza =  Pizzas::PIZZAS[4]
-            puts("You added a #{Pizzas::PIZZAS[4].name}")
+            chosen_pizza.name = "Vegetarian"
+            chosen_pizza.cost = 11
+            puts
+            puts("You added a #{chosen_pizza.name} pizza for $#{chosen_pizza.cost}".colorize(:green))
             break
         when 6
-            chosen_pizza =  Pizzas::PIZZAS[5]
-            puts("You added a #{Pizzas::PIZZAS[5].name}")
+            chosen_pizza.name = "Capricciosa"
+            chosen_pizza.cost = 11
+            puts
+            puts("You added a #{chosen_pizza.name} pizza for $#{chosen_pizza.cost}".colorize(:green))
             break
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:red))
             
             puts ("""
             You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
@@ -206,18 +246,22 @@ def add_premade_pizza(customerorder)
         case base_choice
         when 1
             chosen_pizza.add_base(Pizzas::BASES[0])
-            puts("You chose a Thin Base")
+            puts
+            puts("You chose a Thin Base".colorize(:green))
             break
         when 2 
             chosen_pizza.add_base(Pizzas::BASES[1])
-            puts("You chose a Deep Pan Base")
+            puts
+            puts("You chose a Deep Pan Base".colorize(:green))
             break
         when 3
             chosen_pizza.add_base(Pizzas::BASES[2])
-            puts("You chose a Gluten Free Base")
+            puts
+            puts("You chose a Gluten Free Base".colorize(:green))
             break
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:green))
+            puts
             puts ("""
             You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
 
@@ -248,20 +292,20 @@ def add_premade_pizza(customerorder)
         case size_choice
         when 1
             chosen_pizza.size = "Small"
-            puts("You chose a Small Pizza")
+            puts("You chose a Small Pizza".colorize(:green))
             break
         when 2 
             chosen_pizza.size = "Medium"
             chosen_pizza.cost += 5
-            puts("You chose a Medium Pizza")
+            puts("You chose a Medium Pizza".colorize(:green))
             break
         when 3
             chosen_pizza.size = "Large"
             chosen_pizza.cost += 8
-            puts("You chose a Large Pizza")
+            puts("You chose a Large Pizza".colorize(:green))
             break
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:red))
             puts ("""
             You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
 
@@ -299,11 +343,11 @@ def add_premade_pizza(customerorder)
     15.	Basil
     16.	Tomato Sauce
     17.	BBQ Sauce
-    18. Delete last item
+    17.	Delete Last Item
     19.	Done
     """)
     extra_choice = gets().chomp.to_i
-
+    extra_cost = 0
     while (extra_choice != 19)
         case extra_choice
         when 1
@@ -376,7 +420,7 @@ def add_premade_pizza(customerorder)
             puts
         when 18
             if (chosen_pizza.extras.length <= 0)
-                puts("You need to add an extra first")
+                puts("You need to add an extra first".colorize(:red))
             else 
                 chosen_pizza.extras.pop
                 chosen_pizza.cost -= 2
@@ -384,7 +428,7 @@ def add_premade_pizza(customerorder)
                 puts
             end
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:red))
         end
         puts ("""
         You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
@@ -407,7 +451,7 @@ def add_premade_pizza(customerorder)
         15.	Basil
         16.	Tomato Sauce
         17.	BBQ Sauce
-        18. Delete last item
+        17.	Delete Last Item
         19.	Done
     
         """)
@@ -415,8 +459,9 @@ def add_premade_pizza(customerorder)
     end
 
     customerorder.add_premadepizzas(chosen_pizza)
-    puts("You ordered a #{chosen_pizza}")
-
+    puts
+    puts("You ordered a #{chosen_pizza}".colorize(:green))
+    puts
     order_menu(customerorder)
 end
 
@@ -439,18 +484,21 @@ def choose_custom_pizza(customerorder)
         case base_choice
         when 1
             new_custom_pizza.add_base(Pizzas::BASES[0])
-            puts("You chose a Thin Base")
+            puts
+            puts("You chose a Thin Base".colorize(:green))
             break
         when 2 
             new_custom_pizza.add_base(Pizzas::BASES[1])
-            puts("You chose a Deep Pan Base")
+            puts
+            puts("You chose a Deep Pan Base".colorize(:green))
             break
         when 3
             new_custom_pizza.add_base(Pizzas::BASES[2])
-            puts("You chose a Gluten Free Base")
+            puts("You chose a Gluten Free Base".colorize(:green))
+            puts
             break
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:red))
             puts ("""
             You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
         
@@ -479,20 +527,23 @@ def choose_custom_pizza(customerorder)
         case size_choice
         when 1
             new_custom_pizza.size = "Small"
-            puts("You chose a Small Pizza")
+            puts
+            puts("You chose a Small Pizza".colorize(:green))
             break
         when 2 
             new_custom_pizza.size = "Medium"
             new_custom_pizza.cost += 2
-            puts("You chose a Medium Pizza")
+            puts
+            puts("You chose a Medium Pizza".colorize(:green))
             break
         when 3
             new_custom_pizza.size = "Large"
             new_custom_pizza.cost += 4
-            puts("You chose a Large Pizza")
+            puts
+            puts("You chose a Large Pizza".colorize(:green))
             break
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:red))
             puts ("""
             You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
             
@@ -530,7 +581,7 @@ def choose_custom_pizza(customerorder)
     15.	Basil
     16.	Tomato Sauce
     17.	BBQ Sauce
-    18. Delete last item
+    17.	Delete Last Item
     19.	Done
     """)
     topping_choice = gets().chomp.to_i
@@ -607,7 +658,7 @@ def choose_custom_pizza(customerorder)
             puts
         when 18
             if (new_custom_pizza.toppings.length <= 0)
-                puts("You need to add a topping first")
+                puts("You need to add a topping first".colorize(:red))
             else 
                 new_custom_pizza.toppings.pop
                 new_custom_pizza.cost -= 2
@@ -615,7 +666,7 @@ def choose_custom_pizza(customerorder)
                 puts
             end
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:red))
         end
         puts ("""
         You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
@@ -638,7 +689,7 @@ def choose_custom_pizza(customerorder)
         15.	Basil
         16.	Tomato Sauce
         17.	BBQ Sauce
-        18. Delete last item
+        17.	Delete Last Item
         19.	Done
     
         """)
@@ -646,9 +697,10 @@ def choose_custom_pizza(customerorder)
     end
 
     customerorder.add_custompizzas(new_custom_pizza)
-    puts("You ordered a #{new_custom_pizza}")
-
-order_menu(customerorder)
+    puts
+    puts("You ordered a #{new_custom_pizza}".colorize(:green))
+    puts
+    order_menu(customerorder)
 end
 
 
@@ -672,28 +724,28 @@ def choose_a_drink(customerorder)
         case drink_choice
         when 1
             customerorder.add_drinks(Drinks::DRINKSAVAILABLE[0])
-            puts("You ordered a #{Drinks::DRINKSAVAILABLE[0].name}")
+            puts("You ordered a #{Drinks::DRINKSAVAILABLE[0].name}".colorize(:green))
             break
         when 2
             customerorder.add_drinks(Drinks::DRINKSAVAILABLE[1])
-            puts("You ordered a #{Drinks::DRINKSAVAILABLE[1].name}")
+            puts("You ordered a #{Drinks::DRINKSAVAILABLE[1].name}".colorize(:green))
             break
         when 3
             customerorder.add_drinks(Drinks::DRINKSAVAILABLE[2])
-            puts("You ordered a #{Drinks::DRINKSAVAILABLE[2].name}")
+            puts("You ordered a #{Drinks::DRINKSAVAILABLE[2].name}".colorize(:green))
             break
         when 4
             customerorder.add_drinks(Drinks::DRINKSAVAILABLE[3])
-            puts("You ordered a #{Drinks::DRINKSAVAILABLE[3].name}")
+            puts("You ordered a #{Drinks::DRINKSAVAILABLE[3].name}".colorize(:green))
             break
         when 5
             customerorder.add_drinks(Drinks::DRINKSAVAILABLE[4])
-            puts("You ordered a #{Drinks::DRINKSAVAILABLE[4].name}")
+            puts("You ordered a #{Drinks::DRINKSAVAILABLE[4].name}".colorize(:green))
             break
         when 6
             order_menu(customerorder)
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:red))
             puts ("""
             You are working on order #{customerorder.order_id} for #{customerorder.customer_name}
     
@@ -714,7 +766,8 @@ end
 
 # Method for removing items
 def remove_item(customerorder)
-    puts customerorder
+
+    order_status(customerorder)
 
     puts("""
     What would you like to remove? 
@@ -728,21 +781,37 @@ def remove_item(customerorder)
     while (removal_choice != 4)
         case (removal_choice)
         when 1
-            amount_to_remove = customerorder.premadepizzas.last.cost
-            customerorder.premadepizzas.pop
-            customerorder.order_total -= amount_to_remove
+            if (customerorder.premadepizzas.length <= 0)
+                puts
+                puts("You need to order a pizza first".colorize(:red))
+            else
+                amount_to_remove = customerorder.premadepizzas.last.cost
+                customerorder.premadepizzas.pop
+                customerorder.order_total -= amount_to_remove
+            end
         when 2
-            amount_to_remove = customerorder.custompizzas.last.cost
-            customerorder.custompizzas.pop
-            customerorder.order_total -= amount_to_remove
+            if (customerorder.custompizzas.length <= 0)
+                puts
+                puts("You need to order a custom pizza first".colorize(:red))
+            else
+                amount_to_remove = customerorder.custompizzas.last.cost
+                customerorder.custompizzas.pop
+                customerorder.order_total -= amount_to_remove
+            end
         when 3
-            amount_to_remove = customerorder.drinksordered.last.cost
-            customerorder.drinksordered.pop
-            customerorder.order_total -= amount_to_remove
+            if (customerorder.drinksordered.length <= 0)
+                puts
+                puts("You need to order a drink first".colorize(:red))
+            else
+                amount_to_remove = customerorder.drinksordered.last.cost
+                customerorder.drinksordered.pop
+                customerorder.order_total -= amount_to_remove
+            end
         else
-            puts("please make a valid selection")
+            puts("please make a valid selection".colorize(:red))
         end
-        puts customerorder
+            
+        order_status(customerorder)
 
         puts("""
         What else would you like to remove? 
@@ -751,7 +820,6 @@ def remove_item(customerorder)
         3. Remove the last drink
         4. Done
         """)
-    
         removal_choice = gets().chomp.to_i
     end
     order_menu(customerorder)
