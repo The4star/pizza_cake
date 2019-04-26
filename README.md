@@ -93,10 +93,16 @@ Initial planning was carried out on paper as well as a user workflow drawn up in
 ![planning in action](./docs/paper_planning.jpg)
 
 ### Task Management
-Trello was used in a minimalist way to designate tasks and to keep us on task as we worked through  making the program.
+Trello was used in a minimalist way to designate tasks and to keep us on task as we worked through  making the program. We also added user stories to help us think like an end user and make sure the app came out with the proper functionallity.
 
 ![trello](./docs/trello.jpg)
 
+### User Stories 
+* As a user I can order a pizza off the menu of create my own custom pizza.
+* As a user I can add extras to my premade pizza and remove them if i change my mind
+* As a user I can place my order and then re-open the order to amend it later.
+* As a user I can delete items from my order if i change my mind\
+* As a user i can order as many items as i like.
 ### User Journey/Workflow
 A workflow was drawn up to help us know exactly how the app would run which made it alot easier to then make the program:
 ![pizza_cake_workflow](./docs/app_workflow_diagram.jpg)
